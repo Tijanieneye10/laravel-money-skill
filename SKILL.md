@@ -187,6 +187,49 @@ class Transaction extends Model
 }
 ```
 
+### Handling Nullable Money Columns
+
+When a money column is nullable, use `?string` to avoid `TypeError` on null values:
+
+```php
+use Brick\Math\BigDecimal;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
+class Invoice extends Model
+{
+    protected function discount(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?string $value) => $value !== null ? BigDecimal::of($value) : null,
+            set: fn (?string $value) => $value !== null ? (string) BigDecimal::of($value) : null,
+        );
+    }
+}
+```
+
+For the reusable trait, add a nullable variant:
+
+```php
+trait HasMoneyAttributes
+{
+    protected function moneyAttribute(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => BigDecimal::of($value),
+            set: fn (string $value) => (string) BigDecimal::of($value),
+        );
+    }
+
+    protected function nullableMoneyAttribute(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?string $value) => $value !== null ? BigDecimal::of($value) : null,
+            set: fn (?string $value) => $value !== null ? (string) BigDecimal::of($value) : null,
+        );
+    }
+}
+```
+
 ## Common Operations
 
 ### With `brick/money`
