@@ -1,4 +1,4 @@
-# Laravel Money Skill for Claude
+# PHP(Laravel) Money Skill for Claude
 
 A [Claude skill](https://docs.anthropic.com) that enforces safe monetary calculations in Laravel using the [Brick\Math](https://github.com/brick/math) and [Brick\Money](https://github.com/brick/money) packages.
 
