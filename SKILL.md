@@ -123,7 +123,7 @@ class Transaction extends Model
     {
         return Attribute::make(
             get: fn (string $value) => BigDecimal::of($value),
-            set: fn (BigDecimal|string|int|float $value) => (string) BigDecimal::of((string) $value),
+            set: fn (string $value) => (string) BigDecimal::of($value),
         );
     }
 }
@@ -162,7 +162,7 @@ trait HasMoneyAttributes
     {
         return Attribute::make(
             get: fn (string $value) => BigDecimal::of($value),
-            set: fn (BigDecimal|string|int|float $value) => (string) BigDecimal::of((string) $value),
+            set: fn (string $value) => (string) BigDecimal::of($value),
         );
     }
 }
