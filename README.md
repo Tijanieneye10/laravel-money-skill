@@ -1,6 +1,6 @@
 # PHP(Laravel) Money Skill for Claude
 
-A [Claude skill](https://docs.anthropic.com) that enforces safe monetary calculations in Laravel using the [Brick\Math](https://github.com/brick/math) and [Brick\Money](https://github.com/brick/money) packages.
+An AI coding rule that enforces safe monetary calculations in Laravel using the [Brick\Math](https://github.com/brick/math) and [Brick\Money](https://github.com/brick/money) packages. Works with [Claude Code](https://docs.anthropic.com), [Cursor](https://cursor.com), and Claude Projects.
 
 ## Why?
 
@@ -19,13 +19,22 @@ When this skill is active, Claude will:
 
 ## Installation
 
-### Claude Code (recommended)
+### Claude Code
 
 Copy the `SKILL.md` file into your project's `.claude/skills/` directory:
 
 ```bash
 mkdir -p .claude/skills/laravel-money
 cp SKILL.md .claude/skills/laravel-money/SKILL.md
+```
+
+### Cursor
+
+Add the `SKILL.md` content to your project's `.cursorrules` file, or copy it into `.cursor/rules/`:
+
+```bash
+mkdir -p .cursor/rules
+cp SKILL.md .cursor/rules/laravel-money.md
 ```
 
 ### Claude Projects
